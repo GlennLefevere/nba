@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Context path='/nba'>
+	<Resource name='jdbc/nba' type='javax.sql.DataSource'
+		driverClassName='com.mysql.jdbc.Driver' url='jdbc:mysql://localhost/nba'
+		username='root' password=''
+		factory='org.apache.tomcat.jdbc.pool.DataSourceFactory'
+		validationInterval='60000' validationQuery='select 1' testOnBorrow='true' />
+</Context>
