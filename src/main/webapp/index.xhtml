@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<ui:include src="menu.xhtml"/>
+	<h:form id="tableForm">
+		<p:dataTable id="gamesTable" var="game" value="#{indexBean.games}">
+			<f:facet name="header">
+				<p:commandLink action="#{indexBean.updateGamesDown}"
+					value="&lt;previous" update=":tableForm" />
+				<h:outputText value="#{indexBean.getDate()}"/>
+				<p:commandLink action="#{indexBean.updateGamesUp}"
+					value="next&gt;" update=":tableForm" />
+			</f:facet>
+			<p:column headerText="Home">
+				<h:outputText value="#{game.home.nickname}" />
+			</p:column>
+			<p:column headerText="Score" style="text-align: center;">
+				<h:outputText value="#{game.homeScore} - #{game.visitorScore}" />
+			</p:column>
+			<p:column headerText="Visitor">
+				<h:outputText value="#{game.visitor.nickname}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>
