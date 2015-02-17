@@ -1,5 +1,5 @@
 package nba.com.web;
-
+/*
 import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -47,4 +47,4 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
 		context.setAttribute("contextPath", context.getContextPath());
 		super.onStartup(context);
 	}
-}
+}*/

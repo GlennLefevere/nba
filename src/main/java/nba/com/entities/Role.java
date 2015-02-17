@@ -1,5 +1,6 @@
 package nba.com.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import javax.persistence.Table;
 public class Role {
 	@Id
 	@GeneratedValue
+	@Column(name="user_roles_id")
 	private long id;
 	private String role;
 	@ManyToOne(fetch = FetchType.LAZY)

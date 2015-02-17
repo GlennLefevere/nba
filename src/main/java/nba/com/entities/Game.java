@@ -2,6 +2,7 @@ package nba.com.entities;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -16,7 +17,9 @@ public class Game {
 	private Team visitor;
 	@ManyToOne
 	private Team home;
+	@Column(name="score_home")
 	private int homeScore;
+	@Column(name="score_visitors")
 	private int visitorScore;
 	private Date date;
 	

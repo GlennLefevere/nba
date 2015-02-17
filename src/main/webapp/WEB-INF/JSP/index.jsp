@@ -7,16 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:url value="/{day}" var="urlNext">
+	<c:url value="/" var="urlNext">
 		<c:param name="day" value="${day - 1}"/>
 	</c:url>
-	<c:url value="/{day}" var="urlPrev">
+	<c:url value="/" var="urlPrev">
 		<c:param name="day" value="${day + 1}"/>
 	</c:url>
-	<a href="${urlPrev}">&lt;Previous</a>
-	<a href="${urlNext}">Next&gt;</a>
+	<a href="${urlNext}">&lt;Previous</a>
+	<a href="${urlPrev}">Next&gt;</a>
+	<h1>${datum}</h1>
 	<c:forEach items="${games}" var="game">
-		<h1>${game.visitor.nickname} ${game.visitorScore} - ${game.homeScore} ${game.home.nickname}</h1>
+		<h2>${game.visitor.nickname} ${game.visitorScore} - ${game.homeScore} ${game.home.nickname}</h2>
 	</c:forEach>
 </body>
 </html>

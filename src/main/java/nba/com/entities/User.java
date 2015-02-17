@@ -20,38 +20,55 @@ public class User {
 	private String password;
 	@OneToMany(mappedBy = "user")
 	private Set<Role> roles;
-	
-	public User(){
+	@OneToMany(mappedBy = "user")
+	private Set<UserGame> userGames;
+
+	public User() {
 		roles = new HashSet<Role>();
 	}
-	
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public Set<Role> getRoles() {
 		return roles;
 	}
+
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-	
-	public void addRole(Role role){
+
+	public void addRole(Role role) {
 		roles.add(role);
+	}
+
+	public Set<UserGame> getUserGames() {
+		return userGames;
+	}
+
+	public void setUserGames(Set<UserGame> userGames) {
+		this.userGames = userGames;
 	}
 
 }

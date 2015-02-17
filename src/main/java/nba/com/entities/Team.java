@@ -2,6 +2,7 @@ package nba.com.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -11,6 +12,8 @@ public class Team {
 	private long id;
 	private String city;
 	private String nickname;
+	@Lob
+	private byte[] image;
 	
 	public long getId() {
 		return id;
@@ -29,6 +32,14 @@ public class Team {
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 	
 }

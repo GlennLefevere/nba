@@ -77,14 +77,14 @@ public class GameServiceImpl implements GameService {
 						if (string.contains("visitor")) {
 							Team visitor = makeTeam(lol, teller);
 							String controle = lol[(int) teller + 7].split("\"")[3];
-							if (!controle.contains("")) {
+							if (!controle.isEmpty()) {
 								game.setVisitorScore(Integer.parseInt(controle));
 							}
 							game.setVisitor(visitor);
 						} else if (string.contains("home")) {
 							Team home = makeTeam(lol, teller);
 							String controle = lol[(int) teller + 7].split("\"")[3];
-							if (!controle.contains("")) {
+							if (!controle.isEmpty()) {
 								game.setHomeScore(Integer.parseInt(controle));
 							}
 							game.setHome(home);
@@ -101,6 +101,7 @@ public class GameServiceImpl implements GameService {
 					}
 					teller++;
 				}
+				games.add(game);
 			}
 		}
 		return games;
