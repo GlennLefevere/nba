@@ -10,16 +10,20 @@
 	<title>Insert title here</title>
 </h:head>
 <h:body>
-	<ui:include src="menu.xhtml"/>
+	<ui:include src="menu.xhtml" />
 	<h:form id="tableForm">
 		<p:dataTable id="gamesTable" var="game" value="#{indexBean.games}">
+			<p:ajax event="rowToggle" listener="#{indexBean.getPlayers(game)}"/>
 			<f:facet name="header">
 				<p:commandLink action="#{indexBean.updateGamesDown}"
 					value="&lt;previous" update=":tableForm" />
-				<h:outputText value="#{indexBean.getDate()}"/>
-				<p:commandLink action="#{indexBean.updateGamesUp}"
-					value="next&gt;" update=":tableForm" />
+				<h:outputText value="&nbsp; #{indexBean.getDate()} &nbsp;" />
+				<p:commandLink action="#{indexBean.updateGamesUp}" value="next&gt;"
+					update=":tableForm" />
 			</f:facet>
+			<p:column style="width:16px">
+				<p:rowToggler />
+			</p:column>
 			<p:column headerText="Home">
 				<h:outputText value="#{game.home.nickname}" />
 			</p:column>
@@ -29,6 +33,54 @@
 			<p:column headerText="Visitor">
 				<h:outputText value="#{game.visitor.nickname}" />
 			</p:column>
+			<p:rowExpansion>
+				<h:panelGrid columns="2">
+					<h:panelGroup>
+						<p:dataTable var="homeplayer" value="#{game.home.players}" scrollable="true" scrollWidth="400">
+							<f:facet name="header">
+								<h:outputText value="#{game.home.city} #{game.home.nickname}" />
+							</f:facet>
+							<p:column headerText="Name">
+								<h:outputText value="#{homeplayer.firstName} #{homeplayer.lastName}"/>
+							</p:column>
+							<p:column headerText="points">
+								<h:outputText value="#{homeplayer.points}"/>
+							</p:column>
+							<p:column headerText="fieldgoals made">
+								<h:outputText value="#{homeplayer.fieldGoalsMade}"/>
+							</p:column>
+							<p:column headerText="fieldgoal attempts">
+								<h:outputText value="#{homeplayer.fieldGoalAttempts}"/>
+							</p:column>
+							<p:column headerText="freethrows made">
+								<h:outputText value="#{homeplayer.fieldGoalAttempts}"/>
+							</p:column>
+						</p:dataTable>
+					</h:panelGroup>
+					<h:panelGroup>
+						<p:dataTable var="visplayer" value="#{game.visitor.players}" scrollable="true" scrollWidth="400">
+							<f:facet name="header">
+								<h:outputText value="#{game.visitor.city} #{game.visitor.nickname}" />
+							</f:facet>
+							<p:column headerText="Name">
+								<h:outputText value="#{visplayer.firstName} #{visplayer.lastName}"/>
+							</p:column>
+							<p:column headerText="points">
+								<h:outputText value="#{visplayer.points}"/>
+							</p:column>
+							<p:column headerText="fieldgoals made">
+								<h:outputText value="#{visplayer.fieldGoalsMade}"/>
+							</p:column>
+							<p:column headerText="fieldgoal attempts">
+								<h:outputText value="#{visplayer.fieldGoalAttempts}"/>
+							</p:column>
+							<p:column headerText="freethrows made">
+								<h:outputText value="#{visplayer.fieldGoalAttempts}"/>
+							</p:column>
+						</p:dataTable>
+					</h:panelGroup>
+				</h:panelGrid>
+			</p:rowExpansion>
 		</p:dataTable>
 	</h:form>
 </h:body>

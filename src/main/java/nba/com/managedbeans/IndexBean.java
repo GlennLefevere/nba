@@ -78,4 +78,7 @@ public class IndexBean implements Serializable {
 		return formatter.format(cal.getTime());
 	}
 
+	public void getPlayers(Game game) throws URISyntaxException, IOException{
+		gameService.getBoxScore(game);
+	}
 }

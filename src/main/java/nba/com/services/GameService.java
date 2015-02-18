@@ -9,4 +9,5 @@ import nba.com.entities.Game;
 public interface GameService {
 	public List<Game> findAllGames(int toToday)throws URISyntaxException,
 	IOException;
+	public void getBoxScore(Game game) throws URISyntaxException, IOException;
 }
